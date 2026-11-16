@@ -36,18 +36,18 @@ def chrome():
 def py_ok():
     if not PY.exists():
         return False
-    r = subprocess.run([str(PY), "-c", "import faster_whisper, PIL"], capture_output=True)
+    r = subprocess.run([str(PY), "-c", "import faster_whisper, PIL, cv2, mediapipe"], capture_output=True)
     return r.returncode == 0
 
 
-COMPAT = ((3, 9), (3, 13))  # el transcriptor (faster-whisper) aún no tiene versión para Python más nuevo
+COMPAT = ((3, 9), (3, 12))  # el transcriptor y el cambio de fondo (MediaPipe) aún no tienen versión para Python más nuevo
 
 
 def python_compatible():
     """Un Python 3.9–3.13 ya instalado, o None."""
     if COMPAT[0] <= sys.version_info[:2] <= COMPAT[1]:
         return [sys.executable]
-    for v in ("3.12", "3.11", "3.13", "3.10", "3.9"):
+    for v in ("3.12", "3.11", "3.10", "3.9"):
         cmd = ["py", f"-{v}"] if WIN else [f"python{v}"]
         if shutil.which(cmd[0]) and subprocess.run(cmd + ["-c", "import venv"], capture_output=True).returncode == 0:
             return cmd
@@ -69,7 +69,7 @@ def uv():
 
 
 def crear_venv():
-    paquetes = ["faster-whisper==1.1.1", "requests", "pillow"]
+    paquetes = ["faster-whisper==1.1.1", "requests", "pillow", "mediapipe==0.10.14", "opencv-python-headless"]
     if PY.exists() and subprocess.run([str(PY), "-c", f"import sys; sys.exit(not {COMPAT[0]} <= sys.version_info[:2] <= {COMPAT[1]})"]).returncode:
         shutil.rmtree(VENV)  # se hizo con un Python demasiado nuevo
     base = python_compatible()
@@ -90,7 +90,7 @@ CHEQUEOS = [
     ("FFmpeg (cortar y unir video)", lambda: hay("ffmpeg") and hay("ffprobe"), "ffmpeg", None),
     ("Node.js (motor de animación HyperFrames)", lambda: hay("node") and hay("npx"), "node", None),
     ("Google Chrome (render y Google Flow)", chrome, "chrome", None),
-    ("Transcriptor de voz (faster-whisper) y fotos (Pillow)", py_ok, "venv", None),
+    ("Transcriptor de voz, fotos y cambio de fondo", py_ok, "venv", None),
 ]
 
 faltan = 0

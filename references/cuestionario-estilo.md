@@ -46,4 +46,6 @@ Guarda en `marcas/<negocio>/ficha.json`, dentro de `video`:
 - `look`: la clave (`aura`, `creador`, `gigantes`, `fotos`, `pasos`, `cinematico`, `collage`, `neon`, `acuarela`, `pixel`);
 - `ajustes`: lo que sacaste de su referencia, si la hubo.
 
+Cuéntale también que puede cambiar el fondo de sus videos (acuarela, su local ilustrado, un color de su marca) con solo pedirlo.
+
 Dile que puede cambiarlo cuando quiera con «quiero otro estilo», y que en cada video puede probar otro sin cambiar el guardado.

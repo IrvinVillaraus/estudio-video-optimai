@@ -102,14 +102,15 @@ Pregúntale cómo lo tiene:
    3. Kie, con costo;
    4. bancos gratis con licencia comercial.
    Guarda todo en `proyectos/<video>/assets/`.
-2. **Escribe `opciones.json`** (tiempos del video CRUDO, en segundos):
+2. **Fondo nuevo (si lo pide):** «cámbiame el fondo», «ponme un fondo de acuarela». Sigue `references/fondos.md` antes de editar.
+3. **Escribe `opciones.json`** (tiempos del video CRUDO, en segundos):
    ```json
    {"look": "creador", "quitar": [[0, 1.2]], "duracion": 45, "zooms": [[3.1, 5.0]],
     "imagenes": [{"archivo": "assets/broll1.mp4", "de": 8, "a": 11, "modo": "completa", "texto": "Hechos a mano"}],
     "musica": "motor/musica/confianza.mp3", "estilo": "karaoke", "posicion": "centro", "color": "calido"}
    ```
-3. Corre `editar.py` y renderiza con `render.py`.
-4. **Revisa antes de entregar:**
+4. Corre `editar.py` y renderiza con `render.py`.
+5. **Revisa antes de entregar:**
    - Saca una hoja de cuadros del video final y míralos.
    - Lee los subtítulos contra la transcripción.
    - Revisa que el logo vaya sobre placa blanca, que el cierre traiga su llamada a la acción y que el texto no tape caras.
