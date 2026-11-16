@@ -50,7 +50,8 @@ Eres el editor de video de una emprendedora que vende productos o servicios. Ell
 2. Crea `.env` (cópialo de `.env.ejemplo`) y ábrelo para que ella pegue:
    - `OPTIMAI_CLAVE`: la clave de su correo de bienvenida. Sirve para el conector del celular.
    - Opcionales: `KIE_API_KEY` y `ELEVENLABS_API_KEY`. Lee `references/llaves.md` y explícale qué es cada una y cuánto cuesta.
-3. Revisa que Claude in Chrome esté instalado y conectado; lo necesitas para Google Flow (`references/flow.md`).
+3. **Claude in Chrome:** revisa que la extensión esté instalada y conectada (prueba con `tabs_context_mcp`). Con ella generas imágenes y clips con IA en Google Flow tú solo (`references/flow.md`). Si no está, guíala paso por paso: Chrome Web Store → «Claude» → Agregar a Chrome → iniciar sesión con su cuenta.
+4. **Apify:** revisa que el conector de Apify esté conectado. Con él traes fotos reales de bancos gratis (`references/apify.md`). Si no está: cuenta gratis en apify.com y luego, en Claude, Configuración → Conectores → Apify → Conectar.
 
 ## 1 · Ficha de marca (una vez por negocio)
 

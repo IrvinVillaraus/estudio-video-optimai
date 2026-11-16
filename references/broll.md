@@ -4,9 +4,10 @@ Sirve para tapar cortes, ilustrar lo que dice y darle ritmo. Regla: 1 apoyo cada
 
 **Fuentes, en este orden:**
 1. **Lo suyo:** fotos y clips del producto, del local y de su trabajo. Siempre se ve más real.
-2. **Google Flow:** imágenes sin costo y clips con créditos (`flow.md`).
-3. **Kie.ai:** solo si no tiene Flow y aceptó el costo.
-4. **Bancos gratis con licencia comercial** (Pexels, Pixabay). Anota de dónde salió cada uno.
+2. **Fotos reales con Apify:** de Pexels, Unsplash o Pixabay, con licencia comercial (`apify.md`).
+3. **Google Flow con Claude in Chrome:** imágenes con IA sin costo y clips de video con créditos (`flow.md`).
+4. **Kie.ai:** solo si no tiene Flow y aceptó el costo.
+Anota de dónde salió cada apoyo en `fuentes.txt`.
 
 **Modos en `opciones.json`:**
 - `completa`: tapa toda la pantalla y la voz sigue.
