@@ -1,0 +1,14 @@
+{
+  "_nota": "Ejemplo de servicio PROVISIONAL: Irvin elige el giro definitivo.",
+  "version": 1,
+  "negocio": { "nombre": "Estudio de uñas Vale", "giro": "servicio", "que_vendo": "Uñas acrílicas, gelish y pedicure", "frase": "Uñas que duran y se ven increíbles, con cita y sin esperas", "donde": "Guadalajara, Jalisco", "como_me_compran": "Con cita por WhatsApp o Instagram" },
+  "cliente_ideal": "Mujeres de 20 a 40 años que trabajan y quieren verse arregladas sin perder tiempo",
+  "por_que_me_eligen": "Puntualidad, diseños a la moda y material de calidad",
+  "tono": { "palabras": ["cercana", "moderna", "confiable"], "trato": "tú", "emojis": { "usa": true, "cuales": ["💅", "✨"] },
+    "asi_si": ["Agenda tu cita", "Te consentimos", "Diseño a tu gusto"], "asi_no": ["Precios en letra chiquita", "Comparar con otros salones"] },
+  "visual": { "colores": { "primario": "#be185d", "secundario": "#f9a8d4", "texto": "#ffffff", "fondo": "#fdf2f8" }, "fuentes": { "titulos": "Playfair Display", "textos": "Poppins" },
+    "logo": "marca/logo.png", "logo_sobre": "placa blanca", "referencias": [], "reglas_foto": ["Manos en primer plano", "Fondo limpio y claro", "Antes y después"] },
+  "video": { "formato": "9:16", "duracion_max_s": 30, "ritmo": "rápido", "subtitulos": { "estilo": "caja", "posicion": "abajo" }, "estilo_alterno": "pixel", "musica": "biblioteca", "sale_a_cuadro": false },
+  "cta": { "texto": "Agenda tu cita por WhatsApp", "whatsapp": "POR COMPLETAR", "link": "" },
+  "redes": { "instagram": "POR COMPLETAR", "facebook": "", "tiktok": "POR COMPLETAR" }
+}

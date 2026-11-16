@@ -1,0 +1,40 @@
+{
+  "_nota": "Ficha de marca OptimAI v1. La comparten el curso de Edición y el de Community manager (una ficha por cliente). Lo que no se sepa va como \"POR COMPLETAR\"; nunca se inventa.",
+  "version": 1,
+  "negocio": {
+    "nombre": "",
+    "giro": "producto | servicio",
+    "que_vendo": "",
+    "frase": "Mi negocio en una frase",
+    "donde": "",
+    "como_me_compran": ""
+  },
+  "cliente_ideal": "",
+  "por_que_me_eligen": "",
+  "tono": {
+    "palabras": ["", "", ""],
+    "trato": "tú | usted",
+    "emojis": { "usa": true, "cuales": [] },
+    "asi_si": [],
+    "asi_no": []
+  },
+  "visual": {
+    "colores": { "primario": "#000000", "secundario": "#000000", "texto": "#ffffff", "fondo": "#ffffff" },
+    "fuentes": { "titulos": "", "textos": "" },
+    "logo": "marca/logo.png",
+    "logo_sobre": "placa blanca",
+    "referencias": [{ "tipo": "captura | link | video", "ruta": "", "que_me_gusta": "" }],
+    "reglas_foto": []
+  },
+  "video": {
+    "formato": "9:16",
+    "duracion_max_s": 60,
+    "ritmo": "tranquilo | medio | rápido",
+    "subtitulos": { "estilo": "clasico | caja | karaoke | minimal", "posicion": "abajo | centro | arriba" },
+    "estilo_alterno": "ninguno | acuarela | pixel | personaje",
+    "musica": "biblioteca | propia | ninguna",
+    "sale_a_cuadro": true
+  },
+  "cta": { "texto": "", "whatsapp": "", "link": "" },
+  "redes": { "instagram": "", "facebook": "", "tiktok": "" }
+}

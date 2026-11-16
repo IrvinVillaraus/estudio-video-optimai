@@ -1,0 +1,13 @@
+.env
+.venv/
+proyectos/
+listos/
+marcas/
+__pycache__/
+galeria/*.mp4
+galeria/proyectos/
+.DS_Store
+galeria/hacer.py
+galeria/et_*.png
+galeria/lista.txt
+galeria/c_*.mp4

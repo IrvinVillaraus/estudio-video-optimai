@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "negocio": { "nombre": "Tamales Doña Lupe", "giro": "producto", "que_vendo": "Tamales caseros y atole", "frase": "Tamales hechos a mano como los de la abuela, calientitos desde las 7 am", "donde": "Iztapalapa, CDMX", "como_me_compran": "En mi puesto y a domicilio por WhatsApp" },
+  "cliente_ideal": "Familias y oficinistas de la colonia que desayunan rápido y quieren algo casero",
+  "por_que_me_eligen": "Masa batida a mano, relleno generoso y siempre calientitos",
+  "tono": { "palabras": ["cálida", "casera", "alegre"], "trato": "tú", "emojis": { "usa": true, "cuales": ["🌽", "☕", "❤️"] },
+    "asi_si": ["¡Ya están calientitos!", "Te los aparto", "Hechos con amor de abuela"], "asi_no": ["Lenguaje técnico", "Groserías", "Promesas que no cumplo"] },
+  "visual": { "colores": { "primario": "#c2410c", "secundario": "#facc15", "texto": "#ffffff", "fondo": "#fff7ed" }, "fuentes": { "titulos": "Fraunces", "textos": "Nunito Sans" },
+    "logo": "marca/logo.png", "logo_sobre": "placa blanca", "referencias": [], "reglas_foto": ["Luz de día de frente", "El tamal abierto mostrando el relleno", "Fondo de barro o madera"] },
+  "video": { "formato": "9:16", "duracion_max_s": 45, "ritmo": "medio", "subtitulos": { "estilo": "karaoke", "posicion": "centro" }, "estilo_alterno": "acuarela", "musica": "biblioteca", "sale_a_cuadro": true },
+  "cta": { "texto": "Pide los tuyos por WhatsApp", "whatsapp": "POR COMPLETAR", "link": "" },
+  "redes": { "instagram": "POR COMPLETAR", "facebook": "POR COMPLETAR", "tiktok": "" }
+}
