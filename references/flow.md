@@ -5,7 +5,7 @@ Flow (labs.google/flow) genera imágenes y clips de video con IA usando la cuent
 ## Requisitos
 - La extensión **Claude in Chrome** instalada y conectada (`mcp__claude-in-chrome__*`).
 - La alumna entra a Flow en su Chrome normal, con su cuenta. **Tú nunca escribes su contraseña ni códigos.**
-- Las imágenes no gastan créditos. Los clips de video sí gastan créditos de su plan de Google.
+- **Google da créditos gratis cada día en Flow.** Si hace pocos videos, no necesita pagar ningún plan. Las imágenes no gastan créditos; los clips de video sí. Antes de generar un video, dile cuántos créditos cuesta y cuántos le quedan hoy.
 
 ## Reglas
 1. **Usa su Chrome y la pestaña que ya tiene abierta.** No abras otra ventana ni otro navegador.

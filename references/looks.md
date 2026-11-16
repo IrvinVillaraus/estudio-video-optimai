@@ -1,6 +1,6 @@
 # Los 9 estilos de edición (looks)
 
-Enséñaselos con su número, su nombre y para qué sirve, y que elija uno. Los ejemplos están en `galeria/ligeros/` (mismo video crudo, solo cambia la edición). Si no sabe cuál, recomienda según su giro.
+Enséñaselos con su número, su nombre y para qué sirve, y que elija uno. Los ejemplos cortos están en `galeria/muestrario.html` (y los completos en `galeria/ligeros/`) (mismo video crudo, solo cambia la edición). Si no sabe cuál, recomienda según su giro.
 
 En `opciones.json` basta con `"look": "<clave>"`. Todo lo que pida aparte (color, posición, transición) gana sobre el look.
 

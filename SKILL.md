@@ -79,7 +79,7 @@ Pregúntale cómo lo tiene:
 2. **Referencia visual (si la da):** `referencia.py`.
    - Mira `cuadros.jpg` y `paleta.json` y decide estilo y posición de subtítulos, color (natural, cálido, frío, vivo o suave), ritmo de zooms según `ritmo.json`, y si conviene un estilo alterno.
    - **Copia el estilo, nunca el contenido ni la marca de otros.**
-3. **Estilo:** enséñale los 9 estilos de `references/looks.md` (número, nombre, para qué sirve) y que elija; ofrécele ver los ejemplos de `galeria/ligeros/`.
+3. **Estilo:** usa el `look` guardado en su ficha. Si no tiene, haz el cuestionario de `references/cuestionario-estilo.md`. Los 9 estilos y sus ajustes están en `references/looks.md`; los ejemplos, en `galeria/muestrario.html`.
 4. Propón en una tabla:
    - qué frases se quitan;
    - zooms en las frases fuertes;

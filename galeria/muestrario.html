@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Los 9 estilos · Estudio de video OptimAI</title>
+<style>
+:root{--bg:#faf7ff;--card:#fff;--txt:#1d1830;--sub:#5b5470;--acc:#7c3aed}
+@media (prefers-color-scheme:dark){:root{--bg:#14111c;--card:#1f1a2b;--txt:#f1edf9;--sub:#b4abc8;--acc:#a78bfa}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--txt);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;padding:28px 16px 48px}
+h1{font-size:28px;text-align:center}
+p.lead{text-align:center;color:var(--sub);margin:8px auto 28px;max-width:560px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px;max-width:1100px;margin:auto}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 6px 24px #0000001a}
+video{width:100%;aspect-ratio:9/16;display:block;background:#000}
+.info{padding:12px 14px 16px}
+.num{color:var(--acc);font-weight:800}
+h2{font-size:18px;margin:2px 0 4px}
+.info p{color:var(--sub);font-size:14px}
+</style></head><body>
+<h1>Elige el estilo de tus videos</h1>
+<p class="lead">Es el mismo video crudo editado de 9 formas. Dile a Claude el número del que más te guste, o mándale una captura de un video que te encante y él copia el estilo.</p>
+<div class="grid">
+<div class="card"><video src="muestras/1-creador.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">1</span><h2>Creador dinámico</h2><p>Subtítulo que ilumina cada palabra y zoom en cada corte. Para coaches, servicios y marca personal.</p></div></div>
+<div class="card"><video src="muestras/2-gigantes.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">2</span><h2>Palabras gigantes</h2><p>Una palabra enorme a la vez y tus frases fuertes a pantalla completa. Para tips y opiniones.</p></div></div>
+<div class="card"><video src="muestras/3-fotos.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">3</span><h2>Con fotos</h2><p>Tus fotos aparecen cuando las mencionas. Para productos, comida y antes y después.</p></div></div>
+<div class="card"><video src="muestras/4-pasos.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">4</span><h2>Pasos en pantalla</h2><p>La lista aparece paso a paso mientras hablas. Para tutoriales y recetas.</p></div></div>
+<div class="card"><video src="muestras/5-cinematico.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">5</span><h2>Cinemático</h2><p>Color cálido de película, grano y luces. Para moda, belleza y comida artesanal.</p></div></div>
+<div class="card"><video src="muestras/6-collage.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">6</span><h2>Collage</h2><p>Tu video como foto pegada sobre papel. Para historias y marcas creativas.</p></div></div>
+<div class="card"><video src="muestras/7-neon.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">7</span><h2>Neón</h2><p>Subtítulos que brillan y tono frío. Para marcas jóvenes, tecnología y eventos.</p></div></div>
+<div class="card"><video src="muestras/8-acuarela.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">8</span><h2>Acuarela</h2><p>Cierre pintado en acuarela con letra de pincel. Para marcas tiernas y artesanales.</p></div></div>
+<div class="card"><video src="muestras/9-pixel.mp4" autoplay muted loop playsinline></video><div class="info"><span class="num">9</span><h2>Pixel</h2><p>Letra de videojuego y cierre pixelado. Para marcas juveniles y divertidas.</p></div></div>
+</div></body></html>
