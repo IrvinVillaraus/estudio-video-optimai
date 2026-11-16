@@ -11,10 +11,12 @@ import cv2, mediapipe as mp, numpy as np
 
 video, fondo_f, salida = sys.argv[1:4]
 mov = "--movimiento" in sys.argv
-cap = cv2.VideoCapture(video)
-fps = cap.get(cv2.CAP_PROP_FPS) or 30
-w, h = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-n = int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) or 1
+# ffmpeg lee cualquier formato (los videos de Instagram o del celular a veces no los abre OpenCV)
+info = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height,r_frame_rate:format=duration",
+                       "-of", "default=nw=1:nk=1", video], capture_output=True, text=True).stdout.split()
+w, h = int(info[0]), int(info[1]); a_, b_ = info[2].split("/"); fps = float(a_) / float(b_ or 1)
+n = int(float(info[3]) * fps) or 1
+lector = subprocess.Popen(["ffmpeg", "-v", "error", "-i", video, "-f", "rawvideo", "-pix_fmt", "bgr24", "-"], stdout=subprocess.PIPE)
 
 
 def cubrir(img, ww, hh):  # recorta y escala la imagen para llenar el cuadro sin deformarla
@@ -33,9 +35,10 @@ prev = None
 with mp.solutions.selfie_segmentation.SelfieSegmentation(model_selection=0) as seg:
     i = 0
     while True:
-        ok, fr = cap.read()
-        if not ok:
+        raw = lector.stdout.read(w * h * 3)
+        if len(raw) < w * h * 3:
             break
+        fr = np.frombuffer(raw, np.uint8).reshape(h, w, 3)
         m = seg.process(cv2.cvtColor(fr, cv2.COLOR_BGR2RGB)).segmentation_mask
         prev = m if prev is None else 0.6 * m + 0.4 * prev   # ponytail: suavizado simple entre cuadros; si parpadea el borde, sube el 0.4
         a = cv2.GaussianBlur(np.clip((prev - 0.35) / 0.3, 0, 1), (0, 0), 3)[..., None]

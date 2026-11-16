@@ -153,6 +153,7 @@ LOOKS = {
     "collage": {"estilo": "caja", "posicion": "abajo", "transicion": "glitch", "color": "suave", "marco": "collage"},
     "neon": {"estilo": "neon", "posicion": "centro", "transicion": "glitch", "color": "frio", "grano": True},
     "aura": {"estilo": "aura", "posicion": "arriba", "transicion": "zoom", "color": "calido"},
+    "aura-acuarela": {"estilo": "aura", "posicion": "arriba", "transicion": "fuga", "color": "natural", "adornos": True},
     "acuarela": {"estilo": "karaoke", "posicion": "centro", "transicion": "fuga", "color": "calido", "estilo_alterno": "acuarela"},
     "pixel": {"estilo": "karaoke", "posicion": "centro", "transicion": "glitch", "color": "vivo", "estilo_alterno": "pixel"},
 }
@@ -237,6 +238,11 @@ def composicion(marca, dur_video, palabras, op=None):
     panel = ('<div id="pasos">' + "".join(f'<div class="paso" data-s="{p["s"]:.2f}"><b>{i + 1}</b>{html.escape(p["texto"])}</div>'
                                          for i, p in enumerate(pasos)) + '</div>') if pasos else ""
     grano = '<div id="fx-grano"></div><div id="fx-vineta"></div>' if op.get("grano") else ""
+    # Adornos: estrellitas doradas que brillan en las orillas (no tapan la cara)
+    POS = [(70, 330), (960, 260), (120, 700), (990, 620), (60, 1080), (1000, 1010), (150, 1420), (930, 1380), (520, 200), (880, 1640)]
+    estrella = '<svg viewBox="0 0 40 40"><path d="M20 0C22 14 26 18 40 20C26 22 22 26 20 40C18 26 14 22 0 20C14 18 18 14 20 0Z" fill="{c}"/></svg>'
+    adornos = "".join(f'<div class="adorno" style="left:{x}px;top:{y}px;width:{44 + (i % 3) * 14}px">{estrella.format(c="#d4a72c" if i % 2 else "#ffffff")}</div>'
+                      for i, (x, y) in enumerate(POS)) if op.get("adornos") else ""
     collage = op.get("marco") == "collage"
     js_zoom = "".join(f'tl.to("#cam",{{scale:1.18,duration:.35,ease:"power2.out"}},{a:.2f})'
                       f'.to("#cam",{{scale:1,duration:.35,ease:"power2.inOut"}},{max(a + 0.35, b - 0.35):.2f});'
@@ -290,6 +296,7 @@ html,body,#root{{width:1080px;height:1920px;overflow:hidden;background:#000}}
 .paso{{display:flex;align-items:center;gap:26px;background:#fffffff0;color:#1c1c1c;font-size:50px;font-weight:800;padding:24px 30px;border-radius:28px;
   opacity:0;box-shadow:0 14px 40px rgba(0,0,0,.35)}}
 .paso b{{flex:none;width:76px;height:76px;border-radius:50%;background:{c['primario']};color:{c['texto']};display:flex;align-items:center;justify-content:center}}
+.adorno{{position:absolute;filter:drop-shadow(0 2px 6px #0004);pointer-events:none}}
 #fx-flash{{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}}
 #fx-fuga{{position:absolute;inset:-20%;opacity:0;mix-blend-mode:screen;pointer-events:none;
   background:radial-gradient(circle at 15% 20%,#ff9a3c 0 15%,transparent 45%),radial-gradient(circle at 90% 70%,#ff4f6d 0 12%,transparent 40%)}}
@@ -298,6 +305,8 @@ html,body,#root{{width:1080px;height:1920px;overflow:hidden;background:#000}}
 {'''#root{background:#efe6d6;background-image:radial-gradient(#0002 2px,transparent 2.5px);background-size:22px 22px}
 #cam{inset:150px 70px 330px;border:18px solid #fff;box-shadow:0 30px 70px rgba(0,0,0,.4);rotate:-1.5deg}
 #cam #v{width:100%;height:100%}''' if collage else ''}
+{('.sub{color:'+op['color_sub']+' !important;text-shadow:0 0 3px #fff,0 0 10px #fff,0 0 22px #fffc !important}') if op.get('color_sub') else ''}
+{'#fin{background:url(assets/cierre.jpg) center/cover !important;justify-content:flex-start !important;padding-top:300px !important}#fin h1,#fin p{color:'+c['primario']+' !important;text-shadow:0 0 14px #fff,0 0 4px #fff}' if op.get('fondo_cierre') else ''}
 {css_alt}
 </style></head><body>
 {alt["svg"] if alt else ""}
@@ -306,6 +315,7 @@ html,body,#root{{width:1080px;height:1920px;overflow:hidden;background:#000}}
 {musica}
 {imgs}
 {grano}
+{adornos}
 <div id="fx-fuga"></div>
 {panel}
 {chip}
@@ -328,6 +338,9 @@ document.querySelectorAll(".big").forEach(el=>{{
 }});
 document.querySelectorAll(".paso").forEach(el=>{{
   tl.fromTo(el,{{autoAlpha:0,x:-120}},{{autoAlpha:1,x:0,duration:.35,ease:"back.out(1.7)"}},+el.dataset.s);
+}});
+document.querySelectorAll(".adorno").forEach((el,i)=>{{
+  tl.fromTo(el,{{scale:.55,rotate:0,autoAlpha:.5}},{{scale:1.1,rotate:45,autoAlpha:1,duration:.9+(i%3)*.25,ease:"sine.inOut",yoyo:true,repeat:Math.floor({total:.2f}/(.9+(i%3)*.25))}},(i*.37)%1.5);
 }});
 if(document.querySelector("#fx-grano")) tl.to("#fx-grano",{{backgroundPosition:"{int(total * 12 * 97)}px {int(total * 12 * 61)}px",duration:{total:.2f},ease:"steps({int(total * 12)})"}},0);
 {'tl.to("#cam",{rotate:0.5,duration:.25,ease:"steps(1)",yoyo:true,repeat:'+str(int(total * 4))+'},0);' if collage else ''}
@@ -370,7 +383,7 @@ def preparar(crudo, marca, salida, palabras, op=None):
     dur = duracion(str(out / "assets" / "cortado.mp4"))
     fin_voz = tramos[-1][1]
     palabras = [p for p in palabras if p["start"] < fin_voz and not any(q0 <= p["start"] and p["end"] <= q1 for q0, q1 in op.get("quitar", []))]
-    comp = {k: op.get(k) for k in ("estilo", "posicion", "estilo_alterno", "transicion", "grano", "marco")}
+    comp = {k: op.get(k) for k in ("estilo", "posicion", "estilo_alterno", "transicion", "grano", "marco", "adornos", "color_sub", "fondo_cierre")}
     comp["musica"] = bool(op.get("musica"))
     acum, comp["cortes"] = 0.0, []
     for a, b in tramos[:-1]:  # dónde cae cada corte en el video ya cortado
@@ -382,6 +395,8 @@ def preparar(crudo, marca, salida, palabras, op=None):
     comp["pasos"] = [{"s": r[0], "texto": x["texto"]} for x in op.get("pasos", []) if (r := rango(x["de"], x["de"] + .5, tramos, dur))]
     if op.get("grano"):
         ruido_png(out / "assets" / "grano.png")
+    if op.get("fondo_cierre"):
+        shutil.copy(op["fondo_cierre"], out / "assets" / "cierre.jpg")
     comp["imagenes"] = []
     for i, im in enumerate(op.get("imagenes", [])):
         r = rango(im["de"], im["a"], tramos, dur)

@@ -12,3 +12,10 @@ Ella se graba donde sea y tú le cambias el fondo: acuarela, su local ilustrado,
 4. **Edita** con `editar.py` usando `con-fondo.mp4` como crudo. Funciona con todos los estilos; el que mejor combina es Acuarela (8).
 
 Funciona mejor si ella se graba con luz de frente, con un fondo liso detrás y sin moverse mucho.
+
+## Fondo claro (acuarela, rosa, crema)
+
+Si el fondo es claro, las letras blancas no se leen. En `opciones.json` usa:
+- `"look": "aura-acuarela"`: el estilo de Aura con estrellitas que brillan;
+- `"color_sub": "<su color oscuro>"`: letras de color con contorno blanco;
+- `"fondo_cierre": "<la misma imagen del fondo>"`: el cierre también va sobre el fondo.
