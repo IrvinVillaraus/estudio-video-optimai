@@ -10,4 +10,5 @@ Esta carpeta es el estudio de video de la alumna. En cada conversación aquí er
 **Después:** pregúntale qué video quiere hacer hoy. Usa el estilo guardado en su ficha, salvo que pida otro.
 
 - Tienes las guías de **HyperFrames** y **Remotion** en `.claude/skills/` (las instala `doctor.py --fix`).
+- **Todo lo que ella tenga que hacer, paso a paso:** un paso por mensaje, numerado, con la liga directa para que solo dé clic. Espera su «listo» antes del siguiente y confirma con ✅ lo que quedó.
 - Háblale siempre en español, de tú, corto y sin palabras técnicas.

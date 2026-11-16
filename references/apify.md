@@ -2,10 +2,17 @@
 
 Apify trae fotos reales (no hechas con IA) de bancos gratis con licencia comercial, como Pexels, Unsplash y Pixabay. Úsalo cuando ella no tenga sus propias fotos de algo, o cuando lo que dice «se puede ver» pero no lo grabó.
 
-## Requisitos
-- Cuenta gratis en **apify.com**. El plan gratis trae crédito mensual que alcanza para cientos de fotos.
-- El **conector de Apify** activado en Claude (Configuración → Conectores → Apify → Conectar). Así no hay llaves en ningún archivo.
-- Sin conector: `APIFY_TOKEN` en `.env` y la API de Apify.
+## Requisitos (una sola vez, paso a paso)
+
+Guíala de uno en uno. Dale la liga, espera su «listo» y sigue.
+
+1. Cuenta gratis: https://console.apify.com/sign-up. El plan gratis trae crédito cada mes.
+2. En Claude: **Configuración → Conectores → Agregar conector personalizado**.
+3. Nombre: `Apify`. URL: `https://mcp.apify.com`. Toca **Agregar**.
+4. Toca **Conectar**, inicia sesión en Apify y da **Permitir acceso**.
+5. Abre una conversación nueva en su carpeta y revisa que aparezcan las herramientas de Apify.
+
+No hay llaves ni códigos que copiar: el inicio de sesión lo reemplaza. El método viejo con `npx` y token ya no se usa.
 
 ## Cómo se usa
 1. **Busca el robot (Actor)** con el conector: `search-actors` con «pexels images», «unsplash images» o «pixabay images». Elige el de mejor calificación y más usuarios. Lee su descripción con `fetch-actor-details` antes de correrlo.
