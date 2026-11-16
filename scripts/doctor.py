@@ -4,7 +4,7 @@
 Uso: python3 scripts/doctor.py [--fix]
 Lo que pide contraseña de la computadora NO se corre solo: se imprime el comando para que la alumna lo apruebe.
 """
-import os, platform, shutil, subprocess, sys, venv
+import os, platform, shutil, subprocess, sys
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -40,11 +40,49 @@ def py_ok():
     return r.returncode == 0
 
 
+COMPAT = ((3, 9), (3, 13))  # el transcriptor (faster-whisper) aún no tiene versión para Python más nuevo
+
+
+def python_compatible():
+    """Un Python 3.9–3.13 ya instalado, o None."""
+    if COMPAT[0] <= sys.version_info[:2] <= COMPAT[1]:
+        return [sys.executable]
+    for v in ("3.12", "3.11", "3.13", "3.10", "3.9"):
+        cmd = ["py", f"-{v}"] if WIN else [f"python{v}"]
+        if shutil.which(cmd[0]) and subprocess.run(cmd + ["-c", "import venv"], capture_output=True).returncode == 0:
+            return cmd
+    return None
+
+
+def uv():
+    """uv descarga Python 3.12 sin contraseña. Se instala solo si hace falta."""
+    ruta = shutil.which("uv") or next((str(p) for p in (Path.home() / ".local/bin/uv", Path.home() / ".local/bin/uv.exe",
+                                                       Path.home() / ".cargo/bin/uv") if p.exists()), None)
+    if ruta:
+        return ruta
+    print("⏳ Instalando uv (descarga una versión de Python compatible)…")
+    if WIN:
+        subprocess.run(["powershell", "-ExecutionPolicy", "ByPass", "-c", "irm https://astral.sh/uv/install.ps1 | iex"], check=True)
+    else:
+        subprocess.run("curl -LsSf https://astral.sh/uv/install.sh | sh", shell=True, check=True)
+    return uv()
+
+
 def crear_venv():
-    if not PY.exists():
-        venv.create(VENV, with_pip=True)
-    subprocess.run([str(PY), "-m", "pip", "install", "-q", "--upgrade", "pip"], check=True)
-    subprocess.run([str(PY), "-m", "pip", "install", "-q", "faster-whisper==1.1.1", "requests", "pillow"], check=True)
+    paquetes = ["faster-whisper==1.1.1", "requests", "pillow"]
+    if PY.exists() and subprocess.run([str(PY), "-c", f"import sys; sys.exit(not {COMPAT[0]} <= sys.version_info[:2] <= {COMPAT[1]})"]).returncode:
+        shutil.rmtree(VENV)  # se hizo con un Python demasiado nuevo
+    base = python_compatible()
+    if base:
+        if not PY.exists():
+            subprocess.run(base + ["-m", "venv", str(VENV)], check=True)
+        subprocess.run([str(PY), "-m", "pip", "install", "-q", "--upgrade", "pip"], check=True)
+        subprocess.run([str(PY), "-m", "pip", "install", "-q"] + paquetes, check=True)
+    else:
+        u = uv()
+        if not PY.exists():
+            subprocess.run([u, "venv", "--python", "3.12", str(VENV)], check=True)
+        subprocess.run([u, "pip", "install", "--python", str(PY), "-q"] + paquetes, check=True)
 
 
 CHEQUEOS = [
