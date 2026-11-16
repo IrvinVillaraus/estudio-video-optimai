@@ -110,5 +110,17 @@ for nombre, ok, clave, ayuda in CHEQUEOS:
 if not faltan:
     r = subprocess.run(["npx", "--yes", "hyperframes@0.8.212", "--version"], capture_output=True, text=True, shell=WIN)
     print("✅ HyperFrames " + r.stdout.strip() if r.returncode == 0 else "❌ HyperFrames no responde: corre otra vez con internet.")
+    # Guías oficiales para que Claude domine los dos motores de animación (se descargan de su fuente, no las copiamos)
+    for nombre, paquete, prueba in [("HyperFrames", "heygen-com/hyperframes", "hyperframes"),
+                                    ("Remotion", "remotion-dev/skills", "remotion-best-practices")]:
+        if not (RAIZ / ".claude/skills" / prueba).exists() and FIX:
+            print(f"⏳ Instalando las guías de {nombre} para Claude…")
+            subprocess.run(["npx", "--yes", "skills", "add", paquete, "-a", "claude-code", "-y", "--copy"],
+                           cwd=RAIZ, capture_output=True, shell=WIN)
+        if (RAIZ / ".claude/skills" / prueba).exists():
+            print(f"✅ Guías de {nombre} para Claude")
+        else:
+            faltan += 1
+            print(f"❌ Guías de {nombre}: corre otra vez con --fix y con internet.")
 print("\nTodo listo." if not faltan else f"\nFaltan {faltan}. Corre los comandos de arriba y vuelve a revisar.")
 sys.exit(1 if faltan else 0)

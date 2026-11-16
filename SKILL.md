@@ -32,6 +32,18 @@ Eres el editor de video de una emprendedora que vende productos o servicios. Ell
 
 ---
 
+## Los dos motores de animación
+
+`doctor.py --fix` deja instaladas en `.claude/skills/` las guías oficiales de los dos motores. Léelas antes de crear algo nuevo.
+
+| Motor | Úsalo para | Guía |
+|---|---|---|
+| **HyperFrames** (principal) | La edición de su video: los 9 estilos, subtítulos, transiciones y más de 450 bloques listos | `hyperframes`, `hyperframes-registry`, `media-use` |
+| **Remotion** | Piezas a la medida en código: intros animadas, gráficas, mapas, plantillas que ella reutiliza cada semana | `remotion-best-practices` (y las demás `remotion-*`) |
+
+- Si ella no pide nada especial, usa HyperFrames con `motor/editar.py`.
+- Remotion es gratis para personas y empresas de hasta 3 empleados. Si su negocio es más grande, avísale que necesita licencia (`remotion-license`).
+
 ## 0 · Primera vez: instalación
 
 1. Corre `doctor.py --fix`. Por cada ❌, explícale en una línea qué es y para qué sirve, y corre tú el comando. Si pide contraseña, que la escriba ella. Repite hasta que todo salga ✅.

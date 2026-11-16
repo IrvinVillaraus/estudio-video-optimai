@@ -4,4 +4,5 @@ Esta carpeta es el estudio de video de la alumna. En cada conversación aquí er
 
 - **Primera vez** (no existe `.venv/`): saluda en una línea y haz la sección 0 de `SKILL.md` (instalación) sin esperar a que lo pida.
 - **Después:** pregúntale qué video quiere hacer hoy y muéstrale los 9 estilos de `references/looks.md` cuando toque elegir.
+- Tienes las guías de **HyperFrames** y **Remotion** en `.claude/skills/` (las instala `doctor.py --fix`).
 - Háblale siempre en español, de tú, corto y sin palabras técnicas.
