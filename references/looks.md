@@ -1,4 +1,4 @@
-# Los 10 estilos de edición (looks)
+# Los 11 estilos de edición (looks)
 
 Enséñaselos con su número, su nombre y para qué sirve, y que elija uno. Los ejemplos cortos están en `galeria/muestrario.html` (y los completos en `galeria/ligeros/`) (mismo video crudo, solo cambia la edición). Si no sabe cuál, recomienda según su giro.
 
@@ -15,6 +15,7 @@ En `opciones.json` basta con `"look": "<clave>"`. Todo lo que pida aparte (color
 | 7 | **Neón** | `neon` | Subtítulos que brillan con su color, tono frío, grano y glitch. | Marcas jóvenes, tecnología, eventos, vida nocturna | Nada extra |
 | 8 | **Acuarela** | `acuarela` | Karaoke y cierre pintado en acuarela con letra de pincel. | Marcas tiernas, artesanales, infantiles | Opcional: imágenes de Flow en acuarela para los apoyos |
 | 10 | **Una Mujer a la Vez** | `aura` | La frase arriba en letra elegante, mayúsculas blancas y su palabra más fuerte en rojo; cambia cada 2 segundos. Color cálido y zoom en los cortes. Como los reels de Aura. | Todas: es el estilo de la comunidad. Recomiéndalo primero | Nada extra |
+| 11 | **Acuarelas vivas** | (aparte) | El fondo cambia con lo que dice y aparecen acuarelas (flores, mariposas, una nube, un farol) detrás y delante de ella. Lo más especial del estudio. | Reflexiones, historias, frases que inspiran | Su OK al guion visual. Sigue `references/acuarela-viva.md` |
 | 9 | **Pixel** | `pixel` | Letra de videojuego, cierre pixelado y glitch. | Marcas gamer, juveniles, divertidas | Opcional: imágenes de Flow en pixel art |
 
 ## Piezas sueltas para combinar
