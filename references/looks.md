@@ -1,4 +1,4 @@
-# Los 9 estilos de edición (looks)
+# Los 10 estilos de edición (looks)
 
 Enséñaselos con su número, su nombre y para qué sirve, y que elija uno. Los ejemplos cortos están en `galeria/muestrario.html` (y los completos en `galeria/ligeros/`) (mismo video crudo, solo cambia la edición). Si no sabe cuál, recomienda según su giro.
 
@@ -14,12 +14,13 @@ En `opciones.json` basta con `"look": "<clave>"`. Todo lo que pida aparte (color
 | 6 | **Collage** | `collage` | Su video como foto pegada sobre papel con puntitos, con leve temblor y un glitch en los cortes. | Historias, marcas creativas, hecho a mano | Nada extra |
 | 7 | **Neón** | `neon` | Subtítulos que brillan con su color, tono frío, grano y glitch. | Marcas jóvenes, tecnología, eventos, vida nocturna | Nada extra |
 | 8 | **Acuarela** | `acuarela` | Karaoke y cierre pintado en acuarela con letra de pincel. | Marcas tiernas, artesanales, infantiles | Opcional: imágenes de Flow en acuarela para los apoyos |
+| 10 | **Una Mujer a la Vez** | `aura` | La frase arriba en letra elegante, mayúsculas blancas y su palabra más fuerte en rojo; cambia cada 2 segundos. Color cálido y zoom en los cortes. Como los reels de Aura. | Todas: es el estilo de la comunidad. Recomiéndalo primero | Nada extra |
 | 9 | **Pixel** | `pixel` | Letra de videojuego, cierre pixelado y glitch. | Marcas gamer, juveniles, divertidas | Opcional: imágenes de Flow en pixel art |
 
 ## Piezas sueltas para combinar
 
 - **Transiciones** (`transicion`): `flash` (destello blanco), `whip` (barrido con desenfoque), `zoom` (golpe de zoom), `glitch` (falla digital), `fuga` (fuga de luz). Se ponen en los cortes y al entrar cada foto, como máximo una cada 2.5 s.
-- **Subtítulos** (`estilo`): `clasico`, `caja`, `minimal`, `karaoke`, `pildora`, `neon`, `gigante`.
+- **Subtítulos** (`estilo`): `clasico`, `caja`, `minimal`, `karaoke`, `pildora`, `neon`, `gigante`, `aura`.
 - **Color** (`color`): `natural`, `calido`, `frio`, `vivo`, `suave`.
 - **Extras:** `grano` (película), `marco: "collage"`, `zoom_auto` (zoom en frases alternas), `textos` (palabras a pantalla completa), `pasos` (lista en pantalla).
 - **Más de 450 bloques** de HyperFrames (transiciones 3D, partículas, gráficas, mapas): `npx hyperframes catalog --query "<en inglés>"`. Úsalos cuando pida algo que no está aquí.

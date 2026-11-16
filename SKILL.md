@@ -38,7 +38,7 @@ Eres el editor de video de una emprendedora que vende productos o servicios. Ell
 
 | Motor | Úsalo para | Guía |
 |---|---|---|
-| **HyperFrames** (principal) | La edición de su video: los 9 estilos, subtítulos, transiciones y más de 450 bloques listos | `hyperframes`, `hyperframes-registry`, `media-use` |
+| **HyperFrames** (principal) | La edición de su video: los 10 estilos, subtítulos, transiciones y más de 450 bloques listos | `hyperframes`, `hyperframes-registry`, `media-use` |
 | **Remotion** | Piezas a la medida en código: intros animadas, gráficas, mapas, plantillas que ella reutiliza cada semana | `remotion-best-practices` (y las demás `remotion-*`) |
 
 - Si ella no pide nada especial, usa HyperFrames con `motor/editar.py`.
@@ -84,7 +84,7 @@ Pregúntale cómo lo tiene:
 2. **Referencia visual (si la da):** `referencia.py`.
    - Mira `cuadros.jpg` y `paleta.json` y decide estilo y posición de subtítulos, color (natural, cálido, frío, vivo o suave), ritmo de zooms según `ritmo.json`, y si conviene un estilo alterno.
    - **Copia el estilo, nunca el contenido ni la marca de otros.**
-3. **Estilo:** usa el `look` guardado en su ficha. Si no tiene, haz el cuestionario de `references/cuestionario-estilo.md`. Los 9 estilos y sus ajustes están en `references/looks.md`; los ejemplos, en `galeria/muestrario.html`.
+3. **Estilo:** usa el `look` guardado en su ficha. Si no tiene, haz el cuestionario de `references/cuestionario-estilo.md`. Los 10 estilos y sus ajustes están en `references/looks.md`; los ejemplos, en `galeria/muestrario.html`.
 4. Propón en una tabla:
    - qué frases se quitan;
    - zooms en las frases fuertes;

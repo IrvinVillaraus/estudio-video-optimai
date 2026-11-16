@@ -127,6 +127,8 @@ ESTILOS = {  # estilo de subtítulos -> CSS
     "minimal": "font-size:56px;color:#fff;font-weight:600;text-shadow:0 3px 14px rgba(0,0,0,.75)",
     "pildora": "font-size:78px;color:#fff;-webkit-text-stroke:8px #000;paint-order:stroke fill",
     "neon": "font-size:80px;color:#fff;text-shadow:0 0 12px {acento},0 0 34px {acento},0 0 70px {acento}",
+    "aura": "font-size:78px;color:#fff;font-family:'Playfair Display',serif;font-weight:900;text-transform:uppercase;line-height:1.05;"
+            "text-shadow:0 3px 0 #000,0 6px 18px rgba(0,0,0,.8)",
     "gigante": "font-size:170px;color:#fff;-webkit-text-stroke:14px #000;paint-order:stroke fill;text-transform:uppercase",
 }
 POR_PALABRA = {"karaoke": 2, "pildora": 3, "gigante": 1}  # estilos que iluminan palabra por palabra -> palabras por frase
@@ -150,6 +152,7 @@ LOOKS = {
     "cinematico": {"estilo": "minimal", "posicion": "abajo", "transicion": "fuga", "color": "calido", "grano": True},
     "collage": {"estilo": "caja", "posicion": "abajo", "transicion": "glitch", "color": "suave", "marco": "collage"},
     "neon": {"estilo": "neon", "posicion": "centro", "transicion": "glitch", "color": "frio", "grano": True},
+    "aura": {"estilo": "aura", "posicion": "arriba", "transicion": "zoom", "color": "calido"},
     "acuarela": {"estilo": "karaoke", "posicion": "centro", "transicion": "fuga", "color": "calido", "estilo_alterno": "acuarela"},
     "pixel": {"estilo": "karaoke", "posicion": "centro", "transicion": "glitch", "color": "vivo", "estilo_alterno": "pixel"},
 }
@@ -192,13 +195,16 @@ def composicion(marca, dur_video, palabras, op=None):
     c = marca["colores"]
     total = dur_video + CIERRE
     estilo = op.get("estilo") if op.get("estilo") in ESTILOS else "clasico"
-    gs = frases(palabras, POR_PALABRA.get(estilo, 3))
+    gs = frases(palabras, POR_PALABRA.get(estilo, 6 if estilo == "aura" else 3))
     top = POSICION.get(op.get("posicion"), 1440)
     if estilo == "gigante":
         top -= 120
     acento = c.get("secundario") or c["primario"]
 
     def texto(g):
+        if estilo == "aura":  # la palabra más larga de la frase va en rojo, como en las portadas de Aura
+            clave = max(range(len(g)), key=lambda k: len(g[k]["w"].strip(".,¡!¿?")))
+            return " ".join(f'<span class="rojo">{html.escape(p["w"])}</span>' if k == clave else html.escape(p["w"]) for k, p in enumerate(g))
         if estilo not in POR_PALABRA:
             return html.escape(" ".join(p["w"] for p in g))
         return " ".join(f'<span class="k" data-s="{p["start"]:.2f}" data-e="{p["end"]:.2f}">{html.escape(p["w"])}</span>' for p in g)
@@ -237,6 +243,9 @@ def composicion(marca, dur_video, palabras, op=None):
                       for a, b in op.get("zooms", []))
     alt = ESTILO_ALTERNO.get(op.get("estilo_alterno"))
     css_alt = alt["css"].format(fondo=c.get("fondo", "#fff8f0"), primario=c["primario"], secundario=acento) if alt else ""
+    if estilo == "aura" and not alt:
+        alt = {"fuente": "Playfair Display:wght@900", "css": "", "svg": ""}
+        css_alt = ""
     fuente_alt = (f'<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={alt["fuente"].replace(" ", "+")}&display=swap" />' if alt else "")
     musica = (f'<audio id="m" class="clip" src="assets/musica.m4a" data-start="0" data-duration="{total:.2f}" data-volume="1"></audio>'
               if op.get("musica") else "")
@@ -274,6 +283,7 @@ html,body,#root{{width:1080px;height:1920px;overflow:hidden;background:#000}}
 .placa img{{height:150px;display:block}}
 .placa{{position:relative}}
 .k{{padding:0 12px;border-radius:18px}}
+.sub .rojo{{color:#e11d2e}}
 .big{{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 60px;opacity:0;
   font-size:190px;font-weight:800;line-height:.95;color:#fff;text-transform:uppercase;background:{c['primario']}e6}}
 #pasos{{position:absolute;left:50px;right:50px;bottom:170px;display:flex;flex-direction:column;gap:22px}}

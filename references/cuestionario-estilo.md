@@ -6,7 +6,7 @@ Objetivo: que salga de aquí con **su estilo elegido** y guardado en su ficha. U
 
 | Opción | Qué haces |
 |---|---|
-| **Ver ejemplos** (recomendado) | Abre `galeria/muestrario.html` en su navegador: los 9 estilos en video corto con su descripción. En Mac: `open galeria/muestrario.html`. En Windows: `start galeria\muestrario.html`. Luego pregúntale el número. |
+| **Ver ejemplos** (recomendado) | Abre `galeria/muestrario.html` en su navegador: los 10 estilos en video corto con su descripción. En Mac: `open galeria/muestrario.html`. En Windows: `start galeria\muestrario.html`. Luego pregúntale el número. |
 | **Tengo una referencia** | Que te mande aquí una captura o arrastre a la carpeta un video que le guste. Ve a la sección 3. |
 | **Ayúdame a decidir** | Haz las 4 preguntas de la sección 2 y recomienda. |
 
@@ -17,7 +17,7 @@ Objetivo: que salga de aquí con **su estilo elegido** y guardado en su ficha. U
 3. **¿Qué tipo de videos harás más?** Hablando a cámara / tutoriales o pasos / mostrando mi producto / contando historias.
 4. **¿Tienes fotos de tu producto o negocio?** Sí, muchas / pocas / ninguna.
 
-**Recomienda (máximo 2 opciones, con su número):**
+**Recomienda (máximo 2 opciones, con su número).** Si duda, la primera recomendación es el **10 · Una Mujer a la Vez**, el estilo de los reels de Aura.
 
 | Si… | Recomienda |
 |---|---|
@@ -43,7 +43,7 @@ Objetivo: que salga de aquí con **su estilo elegido** y guardado en su ficha. U
 ## 4 · Guarda su elección
 
 Guarda en `marcas/<negocio>/ficha.json`, dentro de `video`:
-- `look`: la clave (`creador`, `gigantes`, `fotos`, `pasos`, `cinematico`, `collage`, `neon`, `acuarela`, `pixel`);
+- `look`: la clave (`aura`, `creador`, `gigantes`, `fotos`, `pasos`, `cinematico`, `collage`, `neon`, `acuarela`, `pixel`);
 - `ajustes`: lo que sacaste de su referencia, si la hubo.
 
 Dile que puede cambiarlo cuando quiera con «quiero otro estilo», y que en cada video puede probar otro sin cambiar el guardado.
