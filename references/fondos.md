@@ -8,6 +8,7 @@ Ella se graba donde sea y tú le cambias el fondo: acuarela, su local ilustrado,
 2. **Cambia el fondo:** `PY scripts/fondo.py proyectos/<video>/crudo/crudo.mp4 proyectos/<video>/assets/fondo.jpg proyectos/<video>/crudo/con-fondo.mp4 --movimiento`.
    - Tarda unos 8 segundos por cada segundo de video. Avísale: «ve por un café ☕».
    - `--movimiento` hace un acercamiento lento sobre el fondo para que no se vea estático.
+   - `--escala 0.74`: si se grabó muy cerca (selfie), la hace más pequeña y la pone abajo al centro, para que luzca el fondo. Las orillas quedan suaves.
 3. **Revisa:** saca 3 cuadros y mira los bordes del pelo y las manos. Si parpadean, díselo y propón otro fondo más parecido a su ropa o un look sin cambio de fondo.
 4. **Edita** con `editar.py` usando `con-fondo.mp4` como crudo. Funciona con todos los estilos; el que mejor combina es Acuarela (8).
 

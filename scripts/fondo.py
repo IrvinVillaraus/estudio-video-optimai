@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Cambia el fondo de un video donde la alumna habla a cámara (sin pantalla verde).
 
-Uso: PY scripts/fondo.py <video> <fondo.jpg|png> <salida.mp4> [--movimiento]
+Uso: PY scripts/fondo.py <video> <fondo.jpg|png> <salida.mp4> [--movimiento] [--escala 0.75]
+- --escala: hace más pequeña a la persona y la pone abajo al centro, para que luzca el fondo (útil en selfies muy cerca).
      PY scripts/fondo.py <video> --alfa <salida.webm>   (solo la persona, con fondo transparente, para animar capas detrás y delante)
 - El fondo puede ser una imagen de Flow (acuarela, su local ilustrado, etc.).
 - --movimiento: acercamiento lento sobre el fondo, para que no se vea estático.
@@ -12,6 +13,7 @@ import cv2, mediapipe as mp, numpy as np
 
 video, fondo_f, salida = sys.argv[1:4]
 mov = "--movimiento" in sys.argv
+esc = float(sys.argv[sys.argv.index("--escala") + 1]) if "--escala" in sys.argv else 1.0
 alfa = fondo_f == "--alfa"
 # ffmpeg lee cualquier formato (los videos de Instagram o del celular a veces no los abre OpenCV)
 info = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height,r_frame_rate:format=duration",
@@ -51,6 +53,15 @@ with mp.solutions.selfie_segmentation.SelfieSegmentation(model_selection=0) as s
         a = cv2.GaussianBlur(np.clip((prev - 0.35) / 0.3, 0, 1), (0, 0), 3)[..., None]
         if alfa:
             ff.stdin.write(np.dstack([fr, (a[..., 0] * 255).astype(np.uint8)]).tobytes()); i += 1; continue
+        if esc < 1:  # persona más pequeña, abajo al centro
+            sw, sh = int(w * esc), int(h * esc)
+            fr = cv2.resize(np.ascontiguousarray(fr), (sw, sh)); a = cv2.resize(a[..., 0], (sw, sh))[..., None]
+            borde = np.clip(np.minimum(np.arange(sw), np.arange(sw)[::-1]) / 60.0, 0, 1)   # orillas laterales suaves: sin corte recto
+            a = a * borde[None, :, None]
+            x0, y0 = (w - sw) // 2, h - sh
+            lienzo_f = np.zeros((h, w, 3), np.uint8); lienzo_a = np.zeros((h, w, 1), np.float32)
+            lienzo_f[y0:, x0:x0 + sw] = fr; lienzo_a[y0:, x0:x0 + sw] = a
+            fr, a = lienzo_f, lienzo_a
         if mov:  # acercamiento lento: del 112 % al 100 % recortando el centro
             t = i / max(1, n - 1); s = 1 + 0.12 * (1 - t)
             bw, bh = int(w * s), int(h * s)
